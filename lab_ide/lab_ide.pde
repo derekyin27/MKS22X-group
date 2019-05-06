@@ -17,13 +17,14 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
+  float rand = random(25,50);
   Rock(float x, float y) {
     super(x, y);
   }
 
   void display() {
-    /* ONE PERSON WRITE THIS */
-    ellipse(x, y, 3, 3);
+    fill(192,192,192);
+    ellipse(x,y,rand,rand);
   }
 }
 
@@ -32,8 +33,10 @@ public class LivingRock extends Rock implements Moveable {
     super(x, y);
   }
   void move() {
-    x+= random(0, 1);
-    y+= random(0, 1);
+    x+= random(0,10);
+    y+= random(0,10);
+    if(x>1000)x=0;
+    if(y>1000) y = 0;
   }
 }
 
@@ -41,7 +44,7 @@ class Ball extends Thing implements Moveable {
   Ball(float x, float y) {
     super(x, y);
   }
-  float rand = random(25, 50);
+float rand = random(25,50);
   void display() {
     fill(255, 0, 0);
     ellipse(x, y, rand, rand);
@@ -49,10 +52,8 @@ class Ball extends Thing implements Moveable {
   }
 
   void move() {
-    //while (x<1000) {
-      x+= 1;
-      y+= 0;
-    //}
+    x+= random(0,1);
+    y+= random(0,1);
   }
 }
 
@@ -73,7 +74,7 @@ void setup() {
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(r);
   }
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 5; i++) {
     LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
     thingsToDisplay.add(m);
     thingsToMove.add(m);
