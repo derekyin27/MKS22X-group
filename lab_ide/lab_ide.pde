@@ -37,11 +37,12 @@ public class LivingRock extends Rock implements Moveable {
 
 class Ball extends Thing implements Moveable {
   Ball(float x, float y) {
-
     super(x, y);
   }
-
+float rand = random(25,50);
   void display() {
+    fill(255, 0, 0);
+    ellipse(x, y, rand, rand);
     /* ONE PERSON WRITE THIS */
   }
 
