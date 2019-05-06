@@ -31,8 +31,8 @@ public class LivingRock extends Rock implements Moveable {
     super(x, y);
   }
   void move() {
-    x+= random(0,1);
-    y+= random(0,1);
+    x+= random(0, 1);
+    y+= random(0, 1);
   }
 }
 
@@ -40,7 +40,7 @@ class Ball extends Thing implements Moveable {
   Ball(float x, float y) {
     super(x, y);
   }
-float rand = random(25,50);
+  float rand = random(25, 50);
   void display() {
     fill(255, 0, 0);
     ellipse(x, y, rand, rand);
@@ -48,7 +48,8 @@ float rand = random(25,50);
   }
 
   void move() {
-    /* ONE PERSON WRITE THIS */
+    x+= random(-10,10);
+    y+= random(-10,10);
   }
 }
 
