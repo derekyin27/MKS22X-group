@@ -48,8 +48,10 @@ class Ball extends Thing implements Moveable {
   }
 
   void move() {
-    x+= random(-10,10);
-    y+= random(-10,10);
+    //while (x<1000) {
+      x+= 1;
+      y+= 0;
+    //}
   }
 }
 
