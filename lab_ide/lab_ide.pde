@@ -21,10 +21,12 @@ class Rock extends Thing {
   Rock(float x, float y) {
     super(x, y);
   }
-
+  
+  
   void display() {
+    
     fill(192,192,192);
-    ellipse(x,y,rand,rand);
+    image(img, 25, 25, rand,rand);
   }
 }
 
@@ -64,7 +66,7 @@ ArrayList<Moveable> thingsToMove;
 
 void setup() {
   size(1000, 800);
-
+  PImage img = loadImage("rock.png");
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
