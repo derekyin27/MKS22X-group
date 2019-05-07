@@ -1,3 +1,4 @@
+PImage  img; 
 interface Displayable {
   void display();
 }
@@ -17,28 +18,33 @@ abstract class Thing implements Displayable {
 }
 
 class Rock extends Thing {
+
   float rand = random(25,50);
   Rock(float x, float y) {
     super(x, y);
   }
-  
-  
+
   void display() {
-    
-    fill(192,192,192);
-    image(img, 25, 25, rand,rand);
+    image(img, 0, 0, width/2, height/2);
   }
 }
 
 public class LivingRock extends Rock implements Moveable {
+  float xspeed = random(0,1);
+  float yspeed = random(0,1);
   LivingRock(float x, float y) {
     super(x, y);
   }
   void move() {
-    x+= random(0,10);
-    y+= random(0,10);
-    if(x>1000)x=0;
-    if(y>1000) y = 0;
+    xspeed += random(-1,1);
+    yspeed += random(-1,1);
+    x+=xspeed;
+    y+=yspeed;
+    if(x>975||x<25)xspeed*=-1;
+    if(y>775||y<25) yspeed *= -1;
+    if(xspeed>20)xspeed/=2;
+    if(yspeed>20)yspeed/=2;
+
   }
 }
 
@@ -66,7 +72,7 @@ ArrayList<Moveable> thingsToMove;
 
 void setup() {
   size(1000, 800);
-  PImage img = loadImage("rock.png");
+  img = loadImage("rock.jpg");
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
