@@ -1,4 +1,6 @@
 PImage  img; 
+float xdirect = 1;
+float ydirect = 1;
 interface Displayable {
   void display();
 }
