@@ -21,7 +21,7 @@ abstract class Thing implements Displayable {
 
 class Rock extends Thing {
 
-  float rand = random(25,50);
+  float rand = random(25, 50);
   Rock(float x, float y) {
     super(x, y);
   }
@@ -37,21 +37,20 @@ class Rock extends Thing {
 }
 
 public class LivingRock extends Rock implements Moveable {
-  float xspeed = random(0,1);
-  float yspeed = random(0,1);
+  float xspeed = random(0, 1);
+  float yspeed = random(0, 1);
   LivingRock(float x, float y) {
     super(x, y);
   }
   void move() {
-    xspeed += random(-1,1);
-    yspeed += random(-1,1);
+    xspeed += random(-1, 1);
+    yspeed += random(-1, 1);
     x+=xspeed;
     y+=yspeed;
-    if(x>975||x<25)xspeed*=-1;
-    if(y>775||y<25) yspeed *= -1;
-    if(xspeed>20)xspeed/=2;
-    if(yspeed>20)yspeed/=2;
-
+    if (x>975||x<25)xspeed*=-1;
+    if (y>775||y<25) yspeed *= -1;
+    if (xspeed>20)xspeed/=2;
+    if (yspeed>20)yspeed/=2;
   }
 }
 
@@ -59,7 +58,7 @@ class Ball extends Thing implements Moveable {
   Ball(float x, float y) {
     super(x, y);
   }
-float rand = random(25,50);
+  float rand = random(25, 50);
   void display() {
     fill(255, 0, 0);
     ellipse(x, y, rand, rand);
@@ -67,8 +66,14 @@ float rand = random(25,50);
   }
 
   void move() {
-    x+= random(0,1);
-    y+= random(0,1);
+    if (x <  width) {
+      xdirect*=-1;
+    }
+    if (y<height) {
+      ydirect*=-1;
+    }
+    x+= random(0, 1)*xdirect;
+    y+= random(0, 1)*ydirect;
   }
 }
 
