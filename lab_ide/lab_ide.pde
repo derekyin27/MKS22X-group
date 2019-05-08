@@ -47,10 +47,11 @@ public class LivingRock extends Rock implements Moveable {
     yspeed += random(-1, 1);
     x+=xspeed;
     y+=yspeed;
-    if (x>975||x<25)xspeed*=-1;
+   /* if (x>975||x<25)xspeed*=-1;
     if (y>775||y<25) yspeed *= -1;
     if (xspeed>20)xspeed/=2;
     if (yspeed>20)yspeed/=2;
+    */
   }
 }
 
@@ -90,10 +91,10 @@ void setup() {
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
     Ball b = new Ball(50+random(width-100), 50+random(height-100));
-    thingsToDisplay.add(b);
+    //thingsToDisplay.add(b);
     thingsToMove.add(b);
     Rock r = new Rock(50+random(width-100), 50+random(height-100));
-    thingsToDisplay.add(r);
+    //thingsToDisplay.add(r);
   }
   for (int i = 0; i < 5; i++) {
     LivingRock m = new LivingRock(50+random(width-100), 50+random(height-100));
