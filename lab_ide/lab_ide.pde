@@ -1,4 +1,4 @@
-PImage  img; 
+PImage  img, img2; 
 float xdirect = 1;
 float ydirect = 1;
 interface Displayable {
@@ -27,9 +27,12 @@ class Rock extends Thing {
   }
     float ran = random(width);
     float rany = random(height);
+    int ranimg = parseInt(random(0, 2));
   void display() {
-
+    if (ranimg == 0)
     image(img, ran, rany, 60, 60);
+    else if (ranimg == 1)
+    image(img2, ran, rany, 60, 60);
   }
 }
 
@@ -77,6 +80,7 @@ ArrayList<Moveable> thingsToMove;
 void setup() {
   size(1000, 800);
   img = loadImage("rock.png");
+  img2 = loadImage("rock2.png");
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
