@@ -1,4 +1,4 @@
-PImage  img, img2; 
+PImage  img, img2;
 float xdirect = 1;
 float ydirect = 1;
 interface Displayable {
@@ -9,21 +9,29 @@ interface Moveable {
   void move();
 }
 
-abstract class Thing implements Displayable {
-  float x, y;//Position of the Thing
+interface Collideable {
+  boolean isTouching(Thing other);
+}
 
-  Thing(float x, float y) {
+abstract class Thing implements Displayable, Collideable {
+  float x, y, radius;//Position of the Thing
+
+  Thing(float x, float y, float radius) {
     this.x = x;
     this.y = y;
+    this.radius = radius;
   }
   abstract void display();
+  boolean isTouching(Thing other) {
+    return Math.sqrt(Math.pow(y - other.y, 2) + Math.pow(x - other.x, 2) ) < radius + other.radius;
+  }
 }
 
 class Rock extends Thing {
 
   float rand = random(25, 50);
   Rock(float x, float y) {
-    super(x, y);
+    super(x, y, 40);
   }
     float ran = random(width);
     float rany = random(height);
@@ -57,7 +65,7 @@ public class LivingRock extends Rock implements Moveable {
 
 class Ball extends Thing implements Moveable {
   Ball(float x, float y) {
-    super(x, y);
+    super(x, y, 40);
   }
   float rand = random(25, 50);
   void display() {
